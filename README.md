@@ -82,10 +82,18 @@ Die Webanwendung besteht aus mehreren Funktionen:
   - World/International
  
 - **Farbauswahl Icon**:
+  - Pink
   - Rot
   - Orange
   - Gelb
   - Grün
-  - Cyan
+  - Türkis
+  - Blau
   - Indigo
   - Violet
+  - Magenta
+  - Rosa
+  - Schwarz
+  - Grau
+  - Weiß
+    
