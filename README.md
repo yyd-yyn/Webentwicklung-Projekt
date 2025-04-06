@@ -4,6 +4,7 @@
 
 DiscDiary soll es den Nutzern ermöglichen Musik zu loggen, zu bewerten und zu rezensieren. Nutzer können ihre Einträge mit Rezensionen, Bewertungen in Form von Sternen und weiteren Daten versehen. Diese Einträge werden in chronologischer Reihenfolge angezeigt und bieten eine Übersicht über gehörte Musik. Diese Einträge soll man bearbeiten und/oder löschen können. Beabsichtigt ist die Website für analoge Musikformate um diese in einem Katalog festzuhalten und seine Erfahrungen und Sammlungen im Tagebuch-Format festzuhalten. 
 
+Die Anwendung soll ohne Login funktionieren, die Inhalte speichern und für einen ausgewählten Nutzer bestimmt sein.
 Optional sollte man die Einträge nach Bewertung, Format, Erscheinungsjahr, Interpret*in oder Genre. ordnen können.
 
 ## Funktionen
@@ -11,11 +12,12 @@ Optional sollte man die Einträge nach Bewertung, Format, Erscheinungsjahr, Inte
 Die Webanwendung besteht aus mehreren Funktionen:
 
 1. **Hauptfunktion**:
-   - Zeigt eine chronologisch geordnete Liste der Einträge an.
-   - Jeder Eintrag enthält den Titel, den/die Interpret*in, die Bewertung, die Rezension, das Eintragsdatum und das Erscheinungsjahr.
+   - Erstellen von Einträgen über Musik.
+   - Anzeige als chronologisch geordnete Liste.
+   - Einträge enthalten Angaben und Daten über den jeweiligen Inhalt.
 
-2. **Erstellen/Ändern eines Eintrags**:
-   - Formular zur Eingabe neuer Einträge oder zum Bearbeiten bestehender Einträge.
+3. **Einträge**:
+   - Formular zur Eingabe neuer Einträge oder zum Bearbeiten von bestehenden.
    - Das Formular umfasst Felder für:
      - Eintragsdatum
      - Titel
@@ -29,7 +31,14 @@ Die Webanwendung besteht aus mehreren Funktionen:
      - Farbauswahl für ein Icon/Bild
 
 ## Verfügbare Optionen
-
+- **personalisierbare Daten**:
+  - Eintragsdatum
+  - Titel
+  - Interpret*in
+  - Erscheinungsjahr
+  - Bewertung
+  - Rezension
+    
 - **Veröffentlichungstypen**:
   - Single
   - EP
@@ -71,7 +80,7 @@ Die Webanwendung besteht aus mehreren Funktionen:
   - Singer/Songwriter
   - Soundtrack
   - World/International
-
+ 
 - **Farbauswahl Icon**:
   - Pink
   - Rot
