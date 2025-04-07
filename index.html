@@ -26,7 +26,8 @@
           <p class="extra">
 
             <fieldset class="innen" id="statistics">
-             <p><b> Avg. Rating: </b> <span class="extra" id="avg-rating"> <div class="star" id="star-extra">
+             <p><b> Avg. Rating: </b> <span class="extra" id="avg-rating"> 
+              <div class="star" id="star-extra">
                <big><label class="star" for="star1">&bigstar;</label>
                <label class="star" for="star2">&bigstar;</label>
                <label class="star" for="star3">&bigstar;</label>
@@ -47,21 +48,21 @@
       <div class="entries">
         <button class="addentry">Add Entry</button>
 
-        <fieldset class="entry" id="entrynew">
+        <fieldset class="entry" id="new-entry">
           <legend class="buttons" id="editbuttons">
             <label class="button" id="savebutton">Save</label>
             <label class="button" id="deletebutton">Delete</label>
           </legend>
-          <label> Title: </label><input type="text" class="title" /> &nbsp;
-          <label> Artist: </label><input type="text" class="artist" /> &nbsp;
+          <label> Title: </label><input type="text" class="new-input" id="title" /> &nbsp;
+          <label> Artist: </label><input type="text" class="new-input" id="artist" /> &nbsp;
           <label> Year: </label
-          ><input type="number" class="year" min="1877" max="2100" step="1" />
+          ><input type="number" class="new-input" id="year" min="1877" max="2100" step="1" />
           &nbsp; <br />
-          <input type="date" class="date" />
+          <input type="date" class="new-input" id="date" />
 
           <fieldset class="innen" id="review-container">
             <div class="starandicon">
-              <div class="star" id="star-entry">
+              <div class="star" id="new-star-entry">
                 <label class="star" for="star1">&bigstar;</label>
                 <label class="star" for="star2">&bigstar;</label>
                 <label class="star" for="star3">&bigstar;</label>
@@ -72,7 +73,7 @@
 
               <div class="icon" id="container">
                 <img
-                  id="currentIcon"
+                  id="new-current-icon"
                   src="Icons/Icon_clear.png"
                   alt="Selected Icon"
                 />
@@ -82,7 +83,7 @@
             <legend class="review">Review</legend>
             <div class="ratingbox">
               <div class="detailbox">
-                <details class="entry">
+                <details class="entry" id="new-entry">
                   <summary>Genre</summary>
                   <input type="checkbox" /><label>Alternative</label> <br />
                   <input type="checkbox" /><label>Blues</label> <br />
@@ -107,7 +108,7 @@
                   <input type="checkbox" /><label>Soundtrack</label> <br />
                   <input type="checkbox" /><label>World</label>
                 </details>
-                <details class="entry">
+                <details class="entry" id="new-entry">
                   <summary>Type</summary>
                   <input type="checkbox" /><label>Single</label> <br />
                   <input type="checkbox" /><label>EP</label> <br />
@@ -118,7 +119,7 @@
                   <input type="checkbox" /><label>Remix</label> <br />
                   <input type="checkbox" /><label>Bootleg</label>
                 </details>
-                <details class="entry">
+                <details class="entry" id="new-entry">
                   <summary>Format</summary>
                   <input type="checkbox" /><label>CD</label> <br />
                   <input type="checkbox" /><label>Vinyl</label> <br />
@@ -135,8 +136,7 @@
 
         <fieldset class="entry" id="entry4">
           <legend class="buttons" id="editbuttons">
-            <label class="button" id="savebutton">Save</label>
-            <label class="button" id="deletebutton">Delete</label>
+            <label class="button" id="editbutton">Edit</label>
           </legend>
           <label> Title: </label><input type="text" class="title" /> &nbsp;
           <label> Artist: </label><input type="text" class="artist" /> &nbsp;
@@ -158,7 +158,7 @@
 
               <div class="icon" id="container">
                 <img
-                  id="currentIcon"
+                  id="current-icon"
                   src="Icons/Icon_grey.png"
                   alt="Selected Icon"
                 />
@@ -221,8 +221,7 @@
 
         <fieldset class="entry" id="entry3">
           <legend class="buttons" id="editbuttons">
-            <label class="button" id="savebutton">Save</label>
-            <label class="button" id="deletebutton">Delete</label>
+            <label class="button" id="editbutton">Edit</label>
           </legend>
           <label> Title: </label><input type="text" class="title" /> &nbsp;
           <label> Artist: </label><input type="text" class="artist" /> &nbsp;
@@ -244,7 +243,7 @@
 
               <div class="icon" id="container">
                 <img
-                  id="currentIcon"
+                  id="current-icon"
                   src="Icons/Icon_white.png"
                   alt="Selected Icon"
                 />
@@ -307,8 +306,7 @@
         
         <fieldset class="entry" id="entry2">
           <legend class="buttons" id="editbuttons">
-            <label class="button" id="savebutton">Save</label>
-            <label class="button" id="deletebutton">Delete</label>
+            <label class="button" id="editbutton">Edit</label>
           </legend>
           <label> Title: </label><input type="text" class="title" /> &nbsp;
           <label> Artist: </label><input type="text" class="artist" /> &nbsp;
@@ -330,7 +328,7 @@
 
               <div class="icon" id="container">
                 <img
-                  id="currentIcon"
+                  id="current-icon"
                   src="Icons/Icon_brown.png"
                   alt="Selected Icon"
                 />
@@ -393,8 +391,7 @@
 
         <fieldset class="entry" id="entry1">
           <legend class="buttons" id="editbuttons">
-            <label class="button" id="savebutton">Save</label>
-            <label class="button" id="deletebutton">Delete</label>
+            <label class="button" id="editbutton">Edit</label>
           </legend>
           <label> Title: </label><input type="text" class="title" /> &nbsp;
           <label> Artist: </label><input type="text" class="artist" /> &nbsp;
@@ -416,7 +413,7 @@
 
               <div class="icon" id="container">
                 <img
-                  id="currentIcon"
+                  id="current-icon"
                   src="Icons/Icon_black.png"
                   alt="Selected Icon"
                 />

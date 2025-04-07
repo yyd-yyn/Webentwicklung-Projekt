@@ -1,3 +1,4 @@
+/* main */
 :root {
     --primary-color-1: #a9a79f;
     --primary-color-2: #554b3f;
@@ -37,11 +38,7 @@ h2 {
     border-style: outset;
     z-index: 10; /* ChatGPT */
 }
-blockquote {
-    color: var(--primary-color-4);
-    margin-left: 7%;
-    padding: 2%;
-}
+/* entries */
 fieldset.entry {
     background: var(--primary-color-4);
     color: var(--primary-color-3);
@@ -56,11 +53,31 @@ fieldset.entry {
 fieldset.innen#review-container {
     background: var(--primary-color-1);
     color: var(--primary-color-4);
-    display: flex; /* Flexbox layout for arranging items side by side */
-    align-items: right; /* Align items at the top */
+    display: flex; /* ChatGPT */
+    align-items: right; /* ChatGPT */
     min-width: 94.4%;
     border-style: inset;
 }
+textarea {
+    background: var(--primary-color-2);
+    color: var(--primary-color-3);
+    resize: none;
+    font-style: italic;
+    border-style: inset;
+    border-width: medium;
+    width: 100%;
+    margin-left: 6%;
+}
+#new-current-icon, #current-icon {
+    display: flex;
+    position: relative;
+    width: 140px;
+    height: 140px;
+    margin-top: 0%;
+    left: 5%;
+}
+
+/* extra (statistics) */
 fieldset.extra {
     position: absolute;  
     top: 32.5%;          
@@ -78,24 +95,29 @@ fieldset.extra {
 fieldset#statistics { /**/
     text-align: center;
 }
+
+/* buttons, legends, input */
 button.addentry, button.top, input {
     background: var(--primary-color-2);
     color: var(--primary-color-3);
     font-size: medium;
     margin: 0.2%;
 }
-textarea {
-    background: var(--primary-color-2);
-    color: var(--primary-color-3);
-    resize: none;
-    font-style: italic;
-    border-style: inset;
-    border-width: medium;
-    width: 100%;
-    margin-left: 6%;
+button.top {
+    position: fixed;
+    background: var(--primary-color-4);
+    font-size: small;
+    box-sizing: border-box;
+    padding: 0.5% 0.5%;
+    right: 0.5%;
+    bottom: 0.5%;
 }
-legend.buttons { /**/
+legend.buttons { 
     padding: 0%;
+}
+.button {
+    border-style: outset;
+    font-weight: bold;
 }
 legend.review, legend.extra, .button {
     background: var(--primary-color-1);
@@ -111,16 +133,8 @@ legend.review, legend.extra, .button {
 legend.extra {
     text-align: center;
 }
-.button {
-    border-style: outset;
-    font-weight: bold;
-}
-#editbutton {
-    text-align: right;
-}
-.button:active {
-    border-style: inset;
-}
+
+/* details */
 div.detailbox {
     display: flex; /* ChatGPT */
 }
@@ -144,10 +158,16 @@ div.detailbox label {
     margin-left: 5%;
 }
 
-div#star-entry { /* ChatGPT */
-    display: flex;
+/* stars */
+div#new-star-entry, div#star-entry { 
+    display: flex; /* ChatGPT */
     position: relative;
     font-size: xx-large;
+    margin: 0%;
+    color: var(--primary-color-5);
+}
+div#star-extra {
+    font-size: x-large;
     margin: 0%;
     color: var(--primary-color-5);
 }
@@ -155,42 +175,19 @@ label.star {
     margin-right: 3%;
 }
 
-button.top {
-    background: var(--primary-color-4);
-    position: relative;
-    font-size: small;
-    box-sizing: border-box;
-    padding: 0.5% 0.5%;
+/* effects */
+.button:active {
+    border-style: inset;
 }
-#currentIcon {
-    display: flex;
-    position: relative;
-    width: 140px;
-    height: 140px;
-    margin-top: 0%;
-    left: 5%;
-}
-.entries, footer {
-    margin-left: 3%;
-}
-button, .button, h2, details, .icon, .star {
+button, .button, h2, details#new-entry, #new-current-icon, div#new-star-entry, .new-input, #new-entry .star {
     cursor: pointer;
     transition: transform 0.2s ease, box-shadow 0.2s ease; /* ChatGPT */
 }
-button:hover, .button:hover, h2:hover, details:hover, .icon:hover, #star-entry:hover {
+button:hover, .button:hover, h2:hover, details#new-entry:hover, #new-current-icon:hover, div#new-star-entry:hover, .new-input:hover, #new-entry .star:hover {
     transform: scale(1.05); /* ChatGPT */
 }
-button.top {
-    position: fixed;
-    right: 0.5%;
-    bottom: 0.5%;
-    font-size: small;
-}
 
-/*
-button.addentry {
-}
-div.entries {
-}
-div.ratingbox {
+/* screen bottom */
+.entries, footer {
+    margin-left: 3%;
 }
