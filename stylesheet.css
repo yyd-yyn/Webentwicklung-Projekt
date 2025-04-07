@@ -26,7 +26,7 @@ body, footer, fieldset, textarea, button, input {
     border-width: thick;
 }
 h2 {
-    font-weight:normal;
+    font-weight: normal;
     font-size: large;
     position: fixed;
     top: 1%;
@@ -38,6 +38,10 @@ h2 {
     border-style: outset;
     z-index: 10; /* ChatGPT */
 }
+.entries, footer {
+    margin-left: 3%;
+}
+
 /* entries */
 fieldset.entry {
     background: var(--primary-color-4);
@@ -90,9 +94,6 @@ fieldset.extra {
     border-style: outset;
     border-width: medium;
     padding: 2%; 
-    text-align: center;
-}
-fieldset#statistics { /**/
     text-align: center;
 }
 
@@ -185,9 +186,4 @@ button, .button, h2, details#new-entry, #new-current-icon, div#new-star-entry, .
 }
 button:hover, .button:hover, h2:hover, details#new-entry:hover, #new-current-icon:hover, div#new-star-entry:hover, .new-input:hover, #new-entry .star:hover {
     transform: scale(1.05); /* ChatGPT */
-}
-
-/* screen bottom */
-.entries, footer {
-    margin-left: 3%;
 }
