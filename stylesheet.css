@@ -1,189 +1,224 @@
 /* main */
 :root {
-    --primary-color-1: #a9a79f;
-    --primary-color-2: #554b3f;
-    --primary-color-3: #f2f1ec;
-    --primary-color-4: #363625;
-    --primary-color-5: #1f1c18;
+  --primary-color-1: #a9a79f;
+  --primary-color-2: #554b3f;
+  --primary-color-3: #f2f1ec;
+  --primary-color-4: #363625;
+  --primary-color-5: #1f1c18;
 }
-body, footer, fieldset, textarea, button, input {
-    font-family: 'Times New Roman', Times, serif;
-    font-size: large;
-    background: var(--primary-color-1);
-    color: var(--primary-color-5);
+body,
+footer,
+fieldset,
+textarea,
+button,
+input {
+  font-family: "Times New Roman", Times, serif;
+  font-size: large;
+  background: var(--primary-color-1);
+  color: var(--primary-color-5);
 }
-.titletext {
-    font-size: x-large;
-    font-weight: 100;
-    box-sizing: border-box;
-    border-style: solid;
-    padding: 1% 2%;
-    margin: 1% 0.5%;
-    background: var(--primary-color-2);
-    color: var(--primary-color-5);
-    border-color: var(--primary-color-3);
-    border-style: outset;
-    border-width: thick;
+.entries,
+footer {
+  margin-left: 3%;
+}
+
+/* titles */
+#titletext {
+  font-size: large;
+  font-weight: 100;
+  box-sizing: border-box;
+  border-style: solid;
+  padding: 1% 2%;
+  margin: 1% 0.5%;
+  background: var(--primary-color-4);
+  color: var(--primary-color-3);
+  border-color: var(--primary-color-3);
+  border-style: outset;
+  border-width: thick;
+}
+#big_title {
+  font-size: xx-large;
+}
+#small_italic_title {
+  font-style: italic;
 }
 h2 {
-    font-weight: normal;
-    font-size: large;
-    position: fixed;
-    top: 1%;
-    right: 1.85%;
-    box-sizing: border-box;
-    padding: 0.5% 1%;
-    color: var(--primary-color-1);
-    background: var(--primary-color-4);
-    border-style: outset;
-    z-index: 10; /* ChatGPT */
-}
-.entries, footer {
-    margin-left: 3%;
+  font-weight: bold;
+  font-size: large;
+  position: fixed;
+  top: 1%;
+  right: 1.85%;
+  box-sizing: border-box;
+  padding: 0.5% 1%;
+  color: var(--primary-color-5);
+  background: var(--primary-color-2);
+  border-style: outset;
+  z-index: 10; /* ChatGPT */
 }
 
 /* entries */
 fieldset.entry {
-    background: var(--primary-color-4);
-    color: var(--primary-color-3);
-    margin: 0.5%;
-    margin-bottom: 2%;
-    max-width: fit-content;
-    white-space: nowrap; /* ChatGPT*/
-    border-style: outset;
-    border-width: medium;
-    text-align: right;
+  background: var(--primary-color-4);
+  color: var(--primary-color-3);
+  margin: 0.5%;
+  margin-bottom: 2%;
+  max-width: fit-content;
+  white-space: nowrap; /* ChatGPT*/
+  border-style: outset;
+  border-width: medium;
+  text-align: right;
 }
 fieldset.innen#review-container {
-    background: var(--primary-color-1);
-    color: var(--primary-color-4);
-    display: flex; /* ChatGPT */
-    align-items: right; /* ChatGPT */
-    min-width: 94.4%;
-    border-style: inset;
+  background: var(--primary-color-1);
+  color: var(--primary-color-4);
+  display: flex; /* ChatGPT */
+  align-items: right; /* ChatGPT */
+  min-width: 94.4%;
+  border-style: inset;
 }
 textarea {
-    background: var(--primary-color-2);
-    color: var(--primary-color-3);
-    resize: none;
-    font-style: italic;
-    border-style: inset;
-    border-width: medium;
-    width: 100%;
-    margin-left: 6%;
+  background: var(--primary-color-2);
+  color: var(--primary-color-3);
+  resize: none;
+  font-style: italic;
+  border-style: inset;
+  border-width: medium;
+  width: 100%;
+  margin-left: 6%;
 }
-#new-current-icon, #current-icon {
-    display: flex;
-    position: relative;
-    width: 140px;
-    height: 140px;
-    margin-top: 0%;
-    left: 5%;
+#new-current-icon,
+#current-icon {
+  display: flex;
+  position: relative;
+  width: 140px;
+  height: 140px;
+  margin-top: 0%;
+  left: 5%;
 }
 
 /* extra (statistics) */
 fieldset.extra {
-    position: absolute;  
-    top: 32.5%;          
-    right: 4.5%;          
-    width: 25%;
-    height: 71%;
-    background:var(--primary-color-2);
-    border: var(--primary-color-3);
-    color: var(--primary-color-3);
-    border-style: outset;
-    border-width: medium;
-    padding: 2%; 
-    text-align: center;
+  position: sticky;
+  align-self: flex-start;
+  background: var(--primary-color-2);
+  border: var(--primary-color-3);
+  color: var(--primary-color-3);
+  text-align: center;
+  border-style: outset;
+  border-width: medium;
+  padding: 10%;
+  margin-left: 15%;
+  width: 130%;
+  height: fit-content;
 }
 
 /* buttons, legends, input */
-button.addentry, button.top, input {
-    background: var(--primary-color-2);
-    color: var(--primary-color-3);
-    font-size: medium;
-    margin: 0.2%;
+button.addentry,
+button.top,
+input {
+  background: var(--primary-color-2);
+  color: var(--primary-color-3);
+  font-size: medium;
+  margin: 0.2%;
 }
 button.top {
-    position: fixed;
-    background: var(--primary-color-4);
-    font-size: small;
-    box-sizing: border-box;
-    padding: 0.5% 0.5%;
-    right: 0.5%;
-    bottom: 0.5%;
+  position: fixed;
+  background: var(--primary-color-4);
+  font-size: small;
+  box-sizing: border-box;
+  padding: 0.5% 0.5%;
+  right: 0.5%;
+  bottom: 0.5%;
 }
-legend.buttons { 
-    padding: 0%;
+legend.buttons {
+  padding: 0%;
 }
 .button {
-    border-style: outset;
-    font-weight: bold;
+  border-style: outset;
+  font-weight: bold;
 }
-legend.review, legend.extra, .button {
-    background: var(--primary-color-1);
-    color: var(--primary-color-5);
-    font-size: large;
-    font-style: normal;
-    font-weight: medium;
-    text-align: left;
-    border-style: outset;
-    padding-left: 1%;
-    padding-right: 1%;
+legend.review,
+legend.extra,
+.button {
+  background: var(--primary-color-1);
+  color: var(--primary-color-5);
+  font-size: large;
+  font-style: normal;
+  font-weight: medium;
+  text-align: left;
+  border-style: outset;
+  padding-left: 1%;
+  padding-right: 1%;
 }
 legend.extra {
-    text-align: center;
+  text-align: center;
 }
 
 /* details */
 div.detailbox {
-    display: flex; /* ChatGPT */
+  display: flex; /* ChatGPT */
 }
 details {
-    width: 100%;
-    text-align: left;
-    font-size: large;
-    font-weight: bold;
-    color: var(--primary-color-5);
-    margin-bottom: 3%;
-    margin-left: 6%;
+  width: 100%;
+  text-align: left;
+  font-size: large;
+  font-weight: bold;
+  color: var(--primary-color-5);
+  margin-bottom: 3%;
+  margin-left: 6%;
 }
-input[type="checkbox"] { /* ChatGPT */
-    margin: 2%;
+input[type="checkbox"] {
+  /* ChatGPT */
+  margin: 2%;
 }
 div.detailbox label {
-    font-size: medium;
-    font-weight: lighter;
-    text-wrap: nowrap;
-    text-align: left;
-    margin-left: 5%;
+  font-size: medium;
+  font-weight: lighter;
+  text-wrap: nowrap;
+  text-align: left;
+  margin-left: 5%;
 }
 
 /* stars */
-div#new-star-entry, div#star-entry { 
-    display: flex; /* ChatGPT */
-    position: relative;
-    font-size: xx-large;
-    margin: 0%;
-    color: var(--primary-color-5);
+div#new-star-entry,
+div#star-entry {
+  display: flex; /* ChatGPT */
+  position: relative;
+  font-size: xx-large;
+  margin: 0%;
+  color: var(--primary-color-5);
 }
 div#star-extra {
-    font-size: x-large;
-    margin: 0%;
-    color: var(--primary-color-5);
+  font-size: xx-large;
+  margin: 0%;
+  color: var(--primary-color-5);
 }
 label.star {
-    margin-right: 3%;
+  margin-right: 3%;
 }
 
 /* effects */
 .button:active {
-    border-style: inset;
+  border-style: inset;
 }
-button, .button, h2, details#new-entry, #new-current-icon, div#new-star-entry, .new-input, #new-entry .star {
-    cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.2s ease; /* ChatGPT */
+button,
+.button,
+h2,
+details#new-entry,
+#new-current-icon,
+div#new-star-entry,
+.new-input,
+#new-entry .star {
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease; /* ChatGPT */
 }
-button:hover, .button:hover, h2:hover, details#new-entry:hover, #new-current-icon:hover, div#new-star-entry:hover, .new-input:hover, #new-entry .star:hover {
-    transform: scale(1.05); /* ChatGPT */
+button:hover,
+.button:hover,
+h2:hover,
+details#new-entry:hover,
+#new-current-icon:hover,
+div#new-star-entry:hover,
+.new-input:hover,
+#new-entry .star:hover {
+  transform: scale(1.05); /* ChatGPT */
 }
