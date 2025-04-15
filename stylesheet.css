@@ -16,6 +16,7 @@ input {
   font-size: large;
   background: var(--primary-color-1);
   color: var(--primary-color-5);
+  cursor: default;
 }
 .entries,
 footer {
@@ -86,14 +87,13 @@ textarea {
   width: 100%;
   margin-left: 6%;
 }
-#new-current-icon,
-#current-icon {
+.icon {
   display: flex;
   position: relative;
   width: 140px;
   height: 140px;
   margin-top: 0%;
-  left: 5%;
+  margin-left: 2.5%;
 }
 
 /* extra (statistics) */
@@ -106,22 +106,22 @@ fieldset.extra {
   text-align: center;
   border-style: outset;
   border-width: medium;
-  padding: 10%;
-  margin-left: 15%;
-  width: 130%;
+  padding: 3% 2%;
+  margin-left: 50%;
+  max-width: 25%;
   height: fit-content;
 }
 
 /* buttons, legends, input */
-button.addentry,
-button.top,
+.add_entry_button,
+.top_button,
 input {
   background: var(--primary-color-2);
   color: var(--primary-color-3);
   font-size: medium;
   margin: 0.2%;
 }
-button.top {
+#top_button {
   position: fixed;
   background: var(--primary-color-4);
   font-size: small;
@@ -201,24 +201,31 @@ label.star {
 .button:active {
   border-style: inset;
 }
+.new_textarea,
+.new-input {
+  cursor: text;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
 button,
 .button,
-h2,
-details#new-entry,
+details.new_detail_entry,
 #new-current-icon,
 div#new-star-entry,
-.new-input,
-#new-entry .star {
+#new_entry .star,
+.new-input#date,
+input[type="checkbox"] {
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease; /* ChatGPT */
 }
 button:hover,
 .button:hover,
-h2:hover,
-details#new-entry:hover,
+details.new_detail_entry:hover,
 #new-current-icon:hover,
 div#new-star-entry:hover,
 .new-input:hover,
-#new-entry .star:hover {
+.new_detail_entry .star:hover {
   transform: scale(1.05); /* ChatGPT */
+}
+.new_textarea:hover {
+  transform: scale(1.01); 
 }
