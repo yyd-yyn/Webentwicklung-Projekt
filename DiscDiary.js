@@ -1,17 +1,40 @@
-let p = document.querySelector("p");
-console.log(p);
+// details
+document.querySelectorAll(".new_detail_entry").forEach((details) => {
+  const radios = details.querySelectorAll("input[type='radio']");
+  const summary = details.querySelector("summary");
 
-let div = document.getElementById("total_entries");
-let forumsText = "Total Entries:";
-div.textContent = "7";
+  radios.forEach((radio) => {
+    radio.addEventListener("change", () => {
+      const label = radio.nextElementSibling;
+      if (radio.checked) {
+        summary.textContent = label.textContent;
+        setTimeout(() => {
+          details.removeAttribute("open");
+        }, 100);
+      }
+    });
+  });
+});
 
-let div = document.getElementById("year_range");
-let forumsText = "Year Range";
-div.textContent = "";
+// icon
+document.getElementById("new-current-icon").addEventListener("click", () => {
+  document.getElementById("iconModal").style.display = "block";
+});
+function closeModal() {
+  document.getElementById("iconModal").style.display = "none";
+}
+function selectIcon(src) {
+  const currentIcon = document.getElementById("new-current-icon");
+  if (currentIcon) {
+    currentIcon.src = src;
+  }
+  closeModal();
+}
+// top
+document.getElementById("scrollToTopBtn").addEventListener("click", () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth" 
+  });
+});
 
-let div = document.getElementById("top_artist");
-let forumsText = "Top Artist:";
-div.textContent = "me";
-
-let button = document.getElementById("button")
-button.addEventListener("click")

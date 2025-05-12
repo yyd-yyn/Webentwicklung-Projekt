@@ -58,7 +58,8 @@ h2 {
 }
 
 /* entries */
-fieldset.entry {
+fieldset.new_entry,
+fieldset.saved_entry {
   background: var(--primary-color-4);
   color: var(--primary-color-3);
   margin: 0.5%;
@@ -68,8 +69,10 @@ fieldset.entry {
   border-style: outset;
   border-width: medium;
   text-align: right;
+  align-items: flex-end;
 }
-fieldset.innen#review-container {
+fieldset.innen#saved_review-container,
+fieldset.innen#new_review-container {
   background: var(--primary-color-1);
   color: var(--primary-color-4);
   display: flex; /* ChatGPT */
@@ -87,19 +90,11 @@ textarea {
   width: 100%;
   margin-left: 6%;
 }
-.icon {
-  display: flex;
-  position: relative;
-  width: 140px;
-  height: 140px;
-  margin-top: 0%;
-  margin-left: 2.5%;
-}
 
 /* extra (statistics) */
 fieldset.extra {
   position: sticky;
-  align-self: flex-start;
+  align-self: flex-end;
   background: var(--primary-color-2);
   border: var(--primary-color-3);
   color: var(--primary-color-3);
@@ -107,19 +102,21 @@ fieldset.extra {
   border-style: outset;
   border-width: medium;
   padding: 3% 2%;
-  margin-left: 50%;
+  margin-left: 66%;
   max-width: 25%;
   height: fit-content;
 }
+span.stats {
+  font-weight: bold;
+}
 
 /* buttons, legends, input */
-.add_entry_button,
-.top_button,
+.site_buttons,
 input {
   background: var(--primary-color-2);
   color: var(--primary-color-3);
   font-size: medium;
-  margin: 0.2%;
+  margin: 0.22%;
 }
 #top_button {
   position: fixed;
@@ -167,34 +164,104 @@ details {
   margin-bottom: 3%;
   margin-left: 6%;
 }
-input[type="checkbox"] {
-  /* ChatGPT */
-  margin: 2%;
+input[type="radio"] { /* ChatGPT */
+  margin: 3%;
 }
-div.detailbox label {
-  font-size: medium;
-  font-weight: lighter;
-  text-wrap: nowrap;
-  text-align: left;
-  margin-left: 5%;
+.new_detail_entry {
+  position: relative;
+  display: inline-block;
+}
+.genre, .type, .format {
+  display: none;
+}
+.new_detail_entry[open] .genre,
+.new_detail_entry[open] .type,
+.new_detail_entry[open] .format { /* ChatGPT */
+  display: block;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 10;
+  background: var(--primary-color-1);
+  border: outset var(--primary-color-5);
+  padding: 10%;
+  width: 100%;
+}
+.new_detail_entry[open] > *:not(summary):not(.genre):not(.type):not(.format) { /* ChatGPT */
+  display: none;
+}
+
+/* modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding-top: 3%;
+}
+.modal-content {
+  background-color: var(--primary-color-1);
+  border: 1px solid var(--primary-color-2);
+  margin: 5% auto;
+  padding: 2%;
+  width: 80%; 
+  max-width: 40%; 
+}
+.close {
+  color: var(--primary-color-5);
+  float: right;
+  font-size: 80%;
+  font-weight: bold;
+}
+
+/* icon */
+.icon {
+  display: flex;
+  position: relative;
+  width: 140px;
+  height: 140px;
+  margin-top: 0%;
+  margin-left: 2%;
+}
+.icon-options {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.icon-options img {
+  width: 13%;
+  height: 13%;
+  margin: 1%;
+  cursor: pointer;
 }
 
 /* stars */
-div#new-star-entry,
-div#star-entry {
-  display: flex; /* ChatGPT */
-  position: relative;
+.star_rating label {
   font-size: xx-large;
-  margin: 0%;
   color: var(--primary-color-5);
+  transition: color 0.4s;
 }
-div#star-extra {
+.star_rating input {
+  display: none;
+}
+.star_rating input:checked ~ label {
+  color: var(--primary-color-3);
+}
+.star_rating {
+  color: var(--primary-color-3); 
   font-size: xx-large;
-  margin: 0%;
-  color: var(--primary-color-5);
-}
-label.star {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  margin-left: 3%;
   margin-right: 3%;
+}
+#extra_star_rating {
+  justify-content: center;
 }
 
 /* effects */
@@ -210,10 +277,9 @@ button,
 .button,
 details.new_detail_entry,
 #new-current-icon,
-div#new-star-entry,
+div#new_star_entry,
 #new_entry .star,
-.new-input#date,
-input[type="checkbox"] {
+.new-input#date {
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease; /* ChatGPT */
 }
@@ -221,11 +287,21 @@ button:hover,
 .button:hover,
 details.new_detail_entry:hover,
 #new-current-icon:hover,
-div#new-star-entry:hover,
+
 .new-input:hover,
 .new_detail_entry .star:hover {
+  cursor: pointer;
   transform: scale(1.05); /* ChatGPT */
 }
-.new_textarea:hover {
+.new_textarea:hover,
+div#new_star_entry:hover {
   transform: scale(1.01); 
 }
+.saved_detail_entry,
+.saved_star_entry,
+.saved_input,
+.saved_textarea
+{
+  pointer-events: none;
+}
+  
