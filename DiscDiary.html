@@ -25,522 +25,588 @@
     </header>
 
     <main>
-      <div class="extra">
-        <fieldset class="extra">
-          <legend class="extra">Statistics</legend>
-          <fieldset class="innen" id="statistics">
-            <p><span class="stats"> Avg. Rating:</span></p>
-            <div class="stats" id="avg-rating">
-              <div class="star_rating" id="extra_star_rating">
-                <input type="radio" id="star5" name="rating" value="5" /><label
-                  class="stars"
-                  id="star5"
-                  >&bigstar;</label
-                >
-                <input type="radio" id="star4" name="rating" value="4" /><label
-                  for="star4"
-                  >&bigstar;</label
-                >
-                <input type="radio" id="star3" name="rating" value="3" /><label
-                  for="star3"
-                  >&bigstar;</label
-                >
-                <input type="radio" id="star2" name="rating" value="2" /><label
-                  for="star2"
-                  >&bigstar;</label
-                >
-                <input type="radio" id="star1" name="rating" value="1" /><label
-                  for="star1"
-                  >&bigstar;</label
-                >
+      <button class="add_entry_button" id="add_entry_button">Add Entry</button>
+      <div class="wrapper">
+        <div class="entries">
+          <div class="modal">
+            <div class="modal_content">
+              <span class="close" onclick="closeModal()">&bigstar;</span>
+              <div class="icon_options">
+                <img
+                  class="icon_option"
+                  src="Icons/Icon_clear.png"
+                  alt="Icon Clear"
+                  onclick="selectIcon(this.src)"
+                />
+                <img
+                  class="icon_option"
+                  src="Icons/Icon_white.png"
+                  alt="Icon White"
+                  onclick="selectIcon(this.src)"
+                />
+                <img
+                  class="icon_option"
+                  src="Icons/Icon_grey.png"
+                  alt="Icon Grey"
+                  onclick="selectIcon(this.src)"
+                />
+                <img
+                  class="icon_option"
+                  src="Icons/Icon_black.png"
+                  alt="Icon Black"
+                  onclick="selectIcon(this.src)"
+                />
+                <img
+                  class="icon_option"
+                  src="Icons/Icon_brown.png"
+                  alt="Icon Brown"
+                  onclick="selectIcon(this.src)"
+                />
+                <img
+                  class="icon_option"
+                  src="Icons/Icon_beige.png"
+                  alt="Icon Beige"
+                  onclick="selectIcon(this.src)"
+                />
+                <img
+                  class="icon_option"
+                  src="Icons/Icon_coral.png"
+                  alt="Icon Coral"
+                  onclick="selectIcon(this.src)"
+                />
+                <img
+                  class="icon_option"
+                  src="Icons/Icon_red.png"
+                  alt="Icon Red"
+                  onclick="selectIcon(this.src)"
+                />
+                <img
+                  class="icon_option"
+                  src="Icons/Icon_orange.png"
+                  alt="Icon Orange"
+                  onclick="selectIcon(this.src)"
+                />
+                <img
+                  class="icon_option"
+                  src="Icons/Icon_yellow.png"
+                  alt="Icon Yellow"
+                  onclick="selectIcon(this.src)"
+                />
+                <img
+                  class="icon_option"
+                  src="Icons/Icon_lime.png"
+                  alt="Icon Lime"
+                  onclick="selectIcon(this.src)"
+                />
+                <img
+                  class="icon_option"
+                  src="Icons/Icon_green.png"
+                  alt="Icon Green"
+                  onclick="selectIcon(this.src)"
+                />
+                <img
+                  class="icon_option"
+                  src="Icons/Icon_cyan.png"
+                  alt="Icon Cyan"
+                  onclick="selectIcon(this.src)"
+                />
+                <img
+                  class="icon_option"
+                  src="Icons/Icon_blue.png"
+                  alt="Icon Blue"
+                  onclick="selectIcon(this.src)"
+                />
+                <img
+                  class="icon_option"
+                  src="Icons/Icon_indigo.png"
+                  alt="Icon Indigo"
+                  onclick="selectIcon(this.src)"
+                />
+                <img
+                  class="icon_option"
+                  src="Icons/Icon_purple.png"
+                  alt="Icon Purple"
+                  onclick="selectIcon(this.src)"
+                />
+                <img
+                  class="icon_option"
+                  src="Icons/Icon_magenta.png"
+                  alt="Icon Magenta"
+                  onclick="selectIcon(this.src)"
+                />
+                <img
+                  class="icon_option"
+                  src="Icons/Icon_pink.png"
+                  alt="Icon Pink"
+                  onclick="selectIcon(this.src)"
+                />
               </div>
             </div>
+          </div>
 
-            <p>
-              <span class="stats">Total Entries:</span
-              ><span class="extra" id="total_entries"> 0 </span>
-            </p>
-            <p>
-              <span class="stats">Year Range:</span
-              ><span class="extra" id="year_range"> 0000 - 0000 </span>
-            </p>
-            <p>
-              <span class="stats">Top Artist:</span
-              ><span class="extra" id="top_artist"> --- </span>
-            </p>
-          </fieldset>
-        </fieldset>
-      </div>
+          <template id="new_entry_template">
+            <fieldset class="new_entry">
+              <legend class="buttons">
+                <label class="save_button">Save</label>
+                <label class="delete_button">Delete</label>
+              </legend>
+              <label> Title: </label
+              ><input type="text" class="new_title" /> &nbsp;
+              <label> Artist: </label
+              ><input type="text" class="new_artist" /> &nbsp;
+              <label> Year: </label
+              ><input
+                type="number"
+                class="new_year"
+                min="1877"
+                max="2100"
+                step="1"
+              />
+              &nbsp; <br />
+              <input type="date" class="new_date" />
 
-      <div class="entries">
-        <button class="site_buttons" id="add_entry_button">Add Entry</button>
-
-        <template id="new_entry_template">
-          <fieldset class="new_entry" id="new_entry">
-            <legend class="buttons" id="editbuttons">
-              <label class="button" id="savebutton">Save</label>
-              <label class="button" id="deletebutton">Delete</label>
-            </legend>
-            <label> Title: </label
-            ><input type="text" class="new-input" id="new_title" /> &nbsp;
-            <label> Artist: </label
-            ><input type="text" class="new-input" id="new_artist" /> &nbsp;
-            <label> Year: </label
-            ><input
-              type="number"
-              class="new-input"
-              id="new_year"
-              min="1877"
-              max="2100"
-              step="1"
-            />
-            &nbsp; <br />
-            <input type="date" class="new-input" id="new_date" />
-
-            <fieldset class="innen" id="new_review-container">
-              <legend class="review">Review</legend>
-              <div class="starandicon">
-                <div class="star_rating" id="new_star_rating">
-                  <input
-                    type="radio"
-                    id="star5"
-                    name="rating"
-                    value="5"
-                  /><label for="star5">&bigstar;</label>
-                  <input
-                    type="radio"
-                    id="star4"
-                    name="rating"
-                    value="4"
-                  /><label for="star4">&bigstar;</label>
-                  <input
-                    type="radio"
-                    id="star3"
-                    name="rating"
-                    value="3"
-                  /><label for="star3">&bigstar;</label>
-                  <input
-                    type="radio"
-                    id="star2"
-                    name="rating"
-                    value="2"
-                  /><label for="star2">&bigstar;</label>
-                  <input
-                    type="radio"
-                    id="star1"
-                    name="rating"
-                    value="1"
-                  /><label for="star1">&bigstar;</label>
-                </div>
-                <br />
-                <div class="icon" id="new_icon_container" onclick="openModal()">
-                  <img
-                    class="icon"
-                    id="new-current-icon"
-                    src="Icons/Icon_clear.png"
-                    alt="Selected Icon"
-                  />
-                  <div class="modal" id="iconModal">
-                    <div class="modal-content">
-                      <span class="close" onclick="closeModal()"
-                        >&bigstar;</span
-                      >
-                      <div class="icon-options">
-                        <img
-                          src="Icons/Icon_clear.png"
-                          alt="Icon Clear"
-                          onclick="selectIcon(this.src)"
-                        />
-                        <img
-                          src="Icons/Icon_white.png"
-                          alt="Icon White"
-                          onclick="selectIcon(this.src)"
-                        />
-                        <img
-                          src="Icons/Icon_grey.png"
-                          alt="Icon Grey"
-                          onclick="selectIcon(this.src)"
-                        />
-                        <img
-                          src="Icons/Icon_black.png"
-                          alt="Icon Black"
-                          onclick="selectIcon(this.src)"
-                        />
-                        <img
-                          src="Icons/Icon_brown.png"
-                          alt="Icon Brown"
-                          onclick="selectIcon(this.src)"
-                        />
-                        <img
-                          src="Icons/Icon_beige.png"
-                          alt="Icon Beige"
-                          onclick="selectIcon(this.src)"
-                        />
-                        <img
-                          src="Icons/Icon_coral.png"
-                          alt="Icon Coral"
-                          onclick="selectIcon(this.src)"
-                        />
-                        <img
-                          src="Icons/Icon_red.png"
-                          alt="Icon Red"
-                          onclick="selectIcon(this.src)"
-                        />
-                        <img
-                          src="Icons/Icon_orange.png"
-                          alt="Icon Orange"
-                          onclick="selectIcon(this.src)"
-                        />
-                        <img
-                          src="Icons/Icon_yellow.png"
-                          alt="Icon Yellow"
-                          onclick="selectIcon(this.src)"
-                        />
-                        <img
-                          src="Icons/Icon_lime.png"
-                          alt="Icon Lime"
-                          onclick="selectIcon(this.src)"
-                        />
-                        <img
-                          src="Icons/Icon_green.png"
-                          alt="Icon Green"
-                          onclick="selectIcon(this.src)"
-                        />
-                        <img
-                          src="Icons/Icon_cyan.png"
-                          alt="Icon Cyan"
-                          onclick="selectIcon(this.src)"
-                        />
-                        <img
-                          src="Icons/Icon_blue.png"
-                          alt="Icon Blue"
-                          onclick="selectIcon(this.src)"
-                        />
-                        <img
-                          src="Icons/Icon_indigo.png"
-                          alt="Icon Indigo"
-                          onclick="selectIcon(this.src)"
-                        />
-                        <img
-                          src="Icons/Icon_purple.png"
-                          alt="Icon Purple"
-                          onclick="selectIcon(this.src)"
-                        />
-                        <img
-                          src="Icons/Icon_magenta.png"
-                          alt="Icon Magenta"
-                          onclick="selectIcon(this.src)"
-                        />
-                        <img
-                          src="Icons/Icon_pink.png"
-                          alt="Icon Pink"
-                          onclick="selectIcon(this.src)"
-                        />
-                      </div>
-                    </div>
+              <fieldset class="new_review_container">
+                <legend class="review">Review</legend>
+                <div class="starandicon">
+                  <div class="new_star_rating">
+                    <input
+                      type="radio"
+                      id="star5"
+                      name="rating"
+                      value="5"
+                    /><label for="star5">&bigstar;</label>
+                    <input
+                      type="radio"
+                      id="star4"
+                      name="rating"
+                      value="4"
+                    /><label for="star4">&bigstar;</label>
+                    <input
+                      type="radio"
+                      id="star3"
+                      name="rating"
+                      value="3"
+                    /><label for="star3">&bigstar;</label>
+                    <input
+                      type="radio"
+                      id="star2"
+                      name="rating"
+                      value="2"
+                    /><label for="star2">&bigstar;</label>
+                    <input
+                      type="radio"
+                      id="star1"
+                      name="rating"
+                      value="1"
+                    /><label for="star1">&bigstar;</label>
+                  </div>
+                  <br />
+                  <div class="icon" onclick="openModal()">
+                    <img
+                      class="new_current_icon"
+                      src="Icons/Icon_clear.png"
+                      alt="Selected Icon"
+                    />
                   </div>
                 </div>
-              </div>
-              <div class="detailandtext">
-                <div class="detailbox">
-                  <details class="new_detail_entry" id="new_entry_genre">
-                    <summary>Genre</summary>
-                    <div class="genre">
-                      <input type="radio" name="genre" id="genre_alt" /><label
-                        for="genre_alt"
-                        >Alternative</label
-                      >
-                      <br />
-                      <input type="radio" name="genre" id="genre_blues" /><label
-                        for="genre_blues"
-                        >Blues</label
-                      >
-                      <br />
-                      <input type="radio" name="genre" id="genre_child" /><label
-                        for="genre_child"
-                        >Childrens's</label
-                      >
-                      <br />
-                      <input
-                        type="radio"
-                        name="genre"
-                        id="genre_classic"
-                      /><label for="genre_classic">Classical</label>
-                      <br />
-                      <input
-                        type="radio"
-                        name="genre"
-                        id="genre_country"
-                      /><label for="genre_country">Country</label>
-                      <br />
-                      <input type="radio" name="genre" id="genre_dance" /><label
-                        for="genre_dance"
-                        >Dance</label
-                      >
-                      <br />
-                      <input type="radio" name="genre" id="genre_elec" /><label
-                        for="genre_elec"
-                        >Electronic</label
-                      >
-                      <br />
-                      <input type="radio" name="genre" id="genre_folk" /><label
-                        for="genre_folk"
-                        >Folk</label
-                      >
-                      <br />
-                      <input
-                        type="radio"
-                        name="genre"
-                        id="genre_hiphop"
-                      /><label for="genre_hiphop">Hip-Hop/Rap</label>
-                      <br />
-                      <input
-                        type="radio"
-                        name="genre"
-                        id="genre_holiday"
-                      /><label for="genre_holiday">Holiday</label>
-                      <br />
-                      <input type="radio" name="genre" id="genre_indie" /><label
-                        for="genre_indie"
-                        >Indie</label
-                      >
-                      <br />
-                      <input
-                        type="radio"
-                        name="genre"
-                        id="genre_indust"
-                      /><label for="genre_indust">Industrial</label>
-                      <br />
-                      <input type="radio" name="genre" id="genre_jazz" /><label
-                        for="genre_jazz"
-                        >Jazz</label
-                      >
-                      <br />
-                      <input type="radio" name="genre" id="genre_latin" /><label
-                        for="genre_latin"
-                        >Latin</label
-                      >
-                      <br />
-                      <input type="radio" name="genre" id="genre_metal" /><label
-                        for="genre_metal"
-                        >Metal</label
-                      >
-                      <br />
-                      <input type="radio" name="genre" id="genre_pop" /><label
-                        for="genre_pop"
-                        >Pop</label
-                      >
-                      <br />
-                      <input type="radio" name="genre" id="genre_rnb" /><label
-                        for="genre_rnb"
-                        >R&B/Soul</label
-                      >
-                      <br />
-                      <input
-                        type="radio"
-                        name="genre"
-                        id="genre_reggae"
-                      /><label for="genre_reggae">Reggae</label>
-                      <br />
-                      <input type="radio" name="genre" id="genre_rock" /><label
-                        for="genre_rock"
-                        >Rock</label
-                      >
-                      <br />
-                      <input type="radio" name="genre" id="genre_song" /><label
-                        for="genre_song"
-                        >Songwriter</label
-                      >
-                      <br />
-                      <input type="radio" name="genre" id="genre_sound" /><label
-                        for="genre_sound"
-                        >Soundtrack</label
-                      >
-                      <br />
-                      <input type="radio" name="genre" id="genre_world" /><label
-                        for="genre_world"
-                        >World</label
-                      >
-                    </div>
-                  </details>
-                  <details class="new_detail_entry" id="new_entry_type">
-                    <summary>Type</summary>
-                    <div class="type">
-                      <input type="radio" name="type" id="type_single" /><label
-                        for="type_single"
-                        >Single</label
-                      >
-                      <br />
-                      <input type="radio" name="type" id="type_ep" /><label
-                        for="type_ep"
-                        >EP</label
-                      >
-                      <br />
-                      <input type="radio" name="type" id="type_lp" /><label
-                        for="type_lp"
-                        >LP</label
-                      >
-                      <br />
-                      <input type="radio" name="type" id="type_comp" /><label
-                        for="type_comp"
-                        >Compilation</label
-                      >
-                      <br />
-                      <input type="radio" name="type" id="type_live" /><label
-                        for="type_live"
-                        >Live/Session</label
-                      >
-                      <br />
-                      <input type="radio" name="type" id="type_promo" /><label
-                        for="type_promo"
-                        >Promo/Demo</label
-                      >
-                      <br />
-                      <input type="radio" name="type" id="type_remix" /><label
-                        for="type_remix"
-                        >Remix</label
-                      >
-                      <br />
-                      <input type="radio" name="type" id="type_bootleg" /><label
-                        for="type_bootleg"
-                        >Bootleg</label
-                      >
-                    </div>
-                  </details>
-                  <details class="new_detail_entry" id="new_entry_format">
-                    <summary>Format</summary>
-                    <div class="format">
-                      <input type="radio" name="format" id="format_cd" /><label
-                        for="format_cd"
-                        >CD</label
-                      >
-                      <br />
-                      <input
-                        type="radio"
-                        name="format"
-                        id="format_vinyl"
-                      /><label for="format_vinyl">Vinyl</label>
-                      <br />
-                      <input
-                        type="radio"
-                        name="format"
-                        id="format_disc"
-                      /><label for="format_disc">Disc</label>
-                      <br />
-                      <input
-                        type="radio"
-                        name="format"
-                        id="format_tape"
-                      /><label for="format_tape">Tape</label>
-                      <br />
-                      <input
-                        type="radio"
-                        name="format"
-                        id="format_other"
-                      /><label for="format_other">Other</label>
-                    </div>
-                  </details>
+                <div class="detailandtext">
+                  <div class="detailbox">
+                    <details class="new_detail_entry" data-type="genre">
+                      <summary>Genre</summary>
+                      <div class="genre">
+                        <label
+                          ><input
+                            type="radio"
+                            name="genre"
+                            value="Alternative"
+                          />Alternative</label
+                        ><br />
+                        <label
+                          ><input
+                            type="radio"
+                            name="genre"
+                            value="Blues"
+                          />Blues</label
+                        ><br />
+                        <label
+                          ><input
+                            type="radio"
+                            name="genre"
+                            value="Childrens"
+                          />Children's</label
+                        ><br />
+                        <label
+                          ><input
+                            type="radio"
+                            name="genre"
+                            value="Classical"
+                          />Classical</label
+                        ><br />
+                        <label
+                          ><input
+                            type="radio"
+                            name="genre"
+                            value="Country"
+                          />Country</label
+                        ><br />
+                        <label
+                          ><input
+                            type="radio"
+                            name="genre"
+                            value="Dance"
+                          />Dance</label
+                        ><br />
+                        <label
+                          ><input
+                            type="radio"
+                            name="genre"
+                            value="Electronic"
+                          />Electronic</label
+                        ><br />
+                        <label
+                          ><input
+                            type="radio"
+                            name="genre"
+                            value="Folk"
+                          />Folk</label
+                        ><br />
+                        <label
+                          ><input
+                            type="radio"
+                            name="genre"
+                            value="Hip-Hop/Rap"
+                          />Hip-Hop/Rap</label
+                        ><br />
+                        <label
+                          ><input
+                            type="radio"
+                            name="genre"
+                            value="Holiday"
+                          />Holiday</label
+                        ><br />
+                        <label
+                          ><input
+                            type="radio"
+                            name="genre"
+                            value="Indie"
+                          />Indie</label
+                        ><br />
+                        <label
+                          ><input
+                            type="radio"
+                            name="genre"
+                            value="Industrial"
+                          />Industrial</label
+                        ><br />
+                        <label
+                          ><input
+                            type="radio"
+                            name="genre"
+                            value="Jazz"
+                          />Jazz</label
+                        ><br />
+                        <label
+                          ><input
+                            type="radio"
+                            name="genre"
+                            value="Latin"
+                          />Latin</label
+                        ><br />
+                        <label
+                          ><input
+                            type="radio"
+                            name="genre"
+                            value="Metal"
+                          />Metal</label
+                        ><br />
+                        <label
+                          ><input
+                            type="radio"
+                            name="genre"
+                            value="Pop"
+                          />Pop</label
+                        ><br />
+                        <label
+                          ><input
+                            type="radio"
+                            name="genre"
+                            value="R&B/Soul"
+                          />R&B/Soul</label
+                        ><br />
+                        <label
+                          ><input
+                            type="radio"
+                            name="genre"
+                            value="Reggae"
+                          />Reggae</label
+                        ><br />
+                        <label
+                          ><input
+                            type="radio"
+                            name="genre"
+                            value="Rock"
+                          />Rock</label
+                        ><br />
+                        <label
+                          ><input
+                            type="radio"
+                            name="genre"
+                            value="Songwriter"
+                          />Songwriter</label
+                        ><br />
+                        <label
+                          ><input
+                            type="radio"
+                            name="genre"
+                            value="Soundtrack"
+                          />Soundtrack</label
+                        ><br />
+                        <label
+                          ><input
+                            type="radio"
+                            name="genre"
+                            value="World"
+                          />World</label
+                        ><br />
+                      </div>
+                    </details>
+
+                    <details class="new_detail_entry" data-type="type">
+                      <summary>Type</summary>
+                      <div class="type">
+                        <label
+                          ><input
+                            type="radio"
+                            name="type"
+                            value="Single"
+                          />Single</label
+                        ><br />
+                        <label
+                          ><input
+                            type="radio"
+                            name="type"
+                            value="EP"
+                          />EP</label
+                        ><br />
+                        <label
+                          ><input
+                            type="radio"
+                            name="type"
+                            value="LP"
+                          />LP</label
+                        ><br />
+                        <label
+                          ><input
+                            type="radio"
+                            name="type"
+                            value="Compilation"
+                          />Compilation</label
+                        ><br />
+                        <label
+                          ><input
+                            type="radio"
+                            name="type"
+                            value="Live/Session"
+                          />Live/Session</label
+                        ><br />
+                        <label
+                          ><input
+                            type="radio"
+                            name="type"
+                            value="Promo/Demo"
+                          />Promo/Demo</label
+                        ><br />
+                        <label
+                          ><input
+                            type="radio"
+                            name="type"
+                            value="Remix"
+                          />Remix</label
+                        ><br />
+                        <label
+                          ><input
+                            type="radio"
+                            name="type"
+                            value="Bootleg"
+                          />Bootleg</label
+                        ><br />
+                      </div>
+                    </details>
+
+                    <details class="new_detail_entry" data-type="format">
+                      <summary>Format</summary>
+                      <div class="format">
+                        <label
+                          ><input
+                            type="radio"
+                            name="format"
+                            value="CD"
+                          />CD</label
+                        ><br />
+                        <label
+                          ><input
+                            type="radio"
+                            name="format"
+                            value="Vinyl"
+                          />Vinyl</label
+                        ><br />
+                        <label
+                          ><input
+                            type="radio"
+                            name="format"
+                            value="Disc"
+                          />Disc</label
+                        ><br />
+                        <label
+                          ><input
+                            type="radio"
+                            name="format"
+                            value="Tape"
+                          />Tape</label
+                        ><br />
+                        <label
+                          ><input
+                            type="radio"
+                            name="format"
+                            value="Other"
+                          />Other</label
+                        ><br />
+                      </div>
+                    </details>
+                  </div>
+
+                  <textarea
+                    class="new_textarea"
+                    rows="8"
+                    cols="53"
+                    placeholder="Notes:"
+                  ></textarea>
                 </div>
-                <textarea class="new_textarea" rows="8" cols="53">
- Notes: </textarea
-                >
+              </fieldset>
+            </fieldset>
+          </template>
+
+          <template id="saved_entry_template">
+            <fieldset class="saved_entry">
+              <legend class="buttons">
+                <label class="edit_button">Edit</label>
+              </legend>
+              <label> Title: </label
+              ><input type="text" class="saved_title" /> &nbsp;
+              <label> Artist: </label
+              ><input type="text" class="saved_artist" /> &nbsp;
+              <label> Year: </label
+              ><input
+                type="number"
+                class="saved_year"
+                min="1877"
+                max="2100"
+                step="1"
+              />
+              &nbsp; <br />
+              <input type="date" class="saved_date" />
+
+              <fieldset class="saved_review_container">
+                <legend class="review">Review</legend>
+                <div class="starandicon">
+                  <div class="saved_star_rating">
+                    <input type="radio"  value="5" /><label
+                      >&bigstar;</label
+                    >
+                    <input type="radio"  value="4" /><label
+                      >&bigstar;</label
+                    >
+                    <input type="radio"  value="3" /><label
+                      >&bigstar;</label
+                    >
+                    <input type="radio"  value="2" /><label
+                      >&bigstar;</label
+                    >
+                    <input type="radio"  value="1" /><label
+                      >&bigstar;</label
+                    >
+                  </div>
+                  <br />
+
+                  <div class="saved_icon_container">
+                    <img
+                      class="current_icon"
+                      src="Icons/Icon_clear.png"
+                      alt="Selected Icon"
+                    />
+                  </div>
+                </div>
+                <div class="detailandtext">
+                  <div class="detailbox">
+                    <details class="saved_detail_entry">
+                      <summary>Genre</summary>
+                    </details>
+                    <details class="saved_detail_entry">
+                      <summary>Type</summary>
+                    </details>
+                    <details class="saved_detail_entry">
+                      <summary>Format</summary>
+                    </details>
+                  </div>
+                  <textarea
+                    class="saved_textarea"
+                    rows="8"
+                    cols="53"
+                    placeholder="Notes:"
+                  ></textarea>
+                </div>
+              </fieldset>
+            </fieldset>
+          </template>
+
+          <div id="entries_container"></div>
+        </div>
+
+        <div class="extra">
+          <fieldset class="extra">
+            <legend class="extra">Statistics</legend>
+            <fieldset class="innen" id="statistics">
+              <p><span class="stats"> Avg. Rating: </span></p>
+              <div class="stats" id="avg_rating">
+                <div class="extra_star_rating">
+                    <input type="radio"  value="5" /><label
+                      >&bigstar;</label
+                    >
+                    <input type="radio"  value="4" /><label
+                      >&bigstar;</label
+                    >
+                    <input type="radio"  value="3" /><label
+                      >&bigstar;</label
+                    >
+                    <input type="radio"  value="2" /><label
+                      >&bigstar;</label
+                    >
+                    <input type="radio"  value="1" /><label
+                      >&bigstar;</label
+                    >
+                  </div>
               </div>
+
+              <p>
+                <span class="stats">Total Entries: </span
+                ><span class="extra" id="total_entries"> 0 </span>
+              </p>
+              <p>
+                <span class="stats">Year Range: </span
+                ><span class="extra" id="year_range"> 0000 - 0000 </span>
+              </p>
+              <p>
+                <span class="stats">Top Artist: </span
+                ><span class="extra" id="top_artist"> --- </span>
+              </p>
             </fieldset>
           </fieldset>
-        </template>
-
-        <template id="saved_entry_template">
-          <fieldset class="saved_entry" id="entry0">
-            <legend class="buttons" id="editbuttons">
-              <label class="button" id="editbutton">Edit</label>
-            </legend>
-            <label> Title: </label
-            ><input type="text" class="saved_input" id="saved_title" /> &nbsp;
-            <label> Artist: </label
-            ><input type="text" class="saved_input" id="saved_artist" /> &nbsp;
-            <label> Year: </label
-            ><input
-              type="number"
-              class="saved_input"
-              id="saved_year"
-              min="1877"
-              max="2100"
-              step="1"
-            />
-            &nbsp; <br />
-            <input type="date" class="saved_input" id="saved_date" />
-
-            <fieldset class="innen" id="saved_review-container">
-              <legend class="review">Review</legend>
-              <div class="starandicon">
-                <div class="star_rating" id="saved_star_rating">
-                  <input
-                    type="radio"
-                    id="star5"
-                    name="rating"
-                    value="5"
-                  /><label for="star5">&bigstar;</label>
-                  <input
-                    type="radio"
-                    id="star4"
-                    name="rating"
-                    value="4"
-                  /><label for="star4">&bigstar;</label>
-                  <input
-                    type="radio"
-                    id="star3"
-                    name="rating"
-                    value="3"
-                  /><label for="star3">&bigstar;</label>
-                  <input
-                    type="radio"
-                    id="star2"
-                    name="rating"
-                    value="2"
-                  /><label for="star2">&bigstar;</label>
-                  <input
-                    type="radio"
-                    id="star1"
-                    name="rating"
-                    value="1"
-                  /><label for="star1">&bigstar;</label>
-                </div>
-                <br />
-
-                <div class="icon" id="saved_icon_container">
-                  <img
-                    class="current-icon"
-                    src="Icons/Icon_clear.png"
-                    alt="Selected Icon"
-                  />
-                </div>
-              </div>
-              <div class="detailandtext">
-                <div class="detailbox">
-                  <details class="saved_detail_entry" id="saved_entry_genre">
-                    <summary>Genre</summary>
-                  </details>
-                  <details class="saved_detail_entry" id="saved_entry_type">
-                    <summary>Type</summary>
-                  </details>
-                  <details class="saved_detail_entry" id="saved_entry_format">
-                    <summary>Format</summary>
-                  </details>
-                </div>
-                <textarea class="saved_textarea" rows="8" cols="53">
-Notes: </textarea
-                >
-              </div>
-            </fieldset>
-          </fieldset>
-        </template>
+        </div>
       </div>
     </main>
 
     <footer>
-      <button class="site_buttons" id="top_button">
-        &UpArrow; Top &UpArrow;
-      </button>
+      <button class="top_button">&UpArrow; Top &UpArrow;</button>
     </footer>
   </body>
 </html>
