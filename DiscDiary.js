@@ -331,25 +331,25 @@ function saveToLocalStorage() {
     };
   });
 
-  localStorage.setItem("discDiaryEntries", JSON.stringify(data));
+  localStorage.setItem("discdiaryentries", JSON.stringify(data));
 }
 
 //storage (load)
 function loadFromLocalStorage() {
-  const data = JSON.parse(localStorage.getItem("discDiaryEntries") || "[]");
+  const data = JSON.parse(localStorage.getItem("discdiaryentries") || "[]");  // ChatGPT
   const template = document.getElementById("saved_entry_template");
   const container = document.getElementById("entries_container");
 
   data.forEach((entryData) => {
     const clone = template.content.cloneNode(true);
 
-    clone.querySelector(".saved_title").value = entryData.title;
+    clone.querySelector(".saved_title").value = entryData.title; // ChatGPT
     clone.querySelector(".saved_artist").value = entryData.artist;
     clone.querySelector(".saved_year").value = entryData.year;
     clone.querySelector(".saved_date").value = entryData.date;
     clone.querySelector(".saved_textarea").value = entryData.text;
 
-    clone.querySelector(".saved_detail_entry:nth-child(1) summary").textContent = entryData.genre || "Genre";
+    clone.querySelector(".saved_detail_entry:nth-child(1) summary").textContent = entryData.genre || "Genre"; // ChatGPT
     clone.querySelector(".saved_detail_entry:nth-child(2) summary").textContent = entryData.type || "Type";
     clone.querySelector(".saved_detail_entry:nth-child(3) summary").textContent = entryData.format || "Format";
 
@@ -366,7 +366,7 @@ function loadFromLocalStorage() {
 
     setupStarRatingGroup(clone); // ChatGPT
 
-    container.appendChild(clone);
+    container.appendChild(clone);  // ChatGPT
   });
 
   sortEntriesByDate(container);
