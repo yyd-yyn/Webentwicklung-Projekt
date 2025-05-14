@@ -41,7 +41,7 @@ document.addEventListener("click", function (e) {
 });
 
 function closeModal() {
-  document.querySelector(".modal").style.display = "none";
+  document.querySelector(".modal").style.display = "none"; //ChatGPT
 }
 
 function selectIcon(src) {
@@ -54,8 +54,7 @@ function selectIcon(src) {
 // save entry
 container.addEventListener("click", (e) => {
   if (
-    !e.target.classList.contains("save_button") &&
-    e.target.textContent !== "Save"
+    !e.target.classList.contains("save_button") 
   )
     return;
 
@@ -68,26 +67,21 @@ container.addEventListener("click", (e) => {
   const newDate = newEntry.querySelector(".new_date")?.value || "";
   const newText = newEntry.querySelector(".new_textarea")?.value || "";
 
-  const genre =
-    newEntry.querySelector("input[name='genre']:checked")?.value || "";
-  const type =
-    newEntry.querySelector("input[name='type']:checked")?.value || "";
-  const format =
-    newEntry.querySelector("input[name='format']:checked")?.value || "";
+  const genre = newEntry.querySelector("input[name='genre']:checked")?.value || "";
+  const type = newEntry.querySelector("input[name='type']:checked")?.value || "";
+  const format = newEntry.querySelector("input[name='format']:checked")?.value || "";
 
   const newIconSrc = newEntry.querySelector(".new_current_icon")?.src || "";
 
-  const checkedStar = newEntry.querySelector(
-    ".new_star_rating input[type='radio']:checked"
-  );
-  const rating = checkedStar ? parseInt(checkedStar.value) : 0; //ChatGPT
+  const checkedStar = newEntry.querySelector( ".new_star_rating input[type='radio']:checked");
+  const rating = checkedStar ? parseInt(checkedStar.value) : 0; // ChatGPT
 
-  // clone (ChatGPT)
+  // clone 
   const template = document.getElementById("saved_entry_template");
-  const savedEntryClone = template.content.cloneNode(true);
+  const savedEntryClone = template.content.cloneNode(true); // ChatGPT
 
-  // unique IDs/names to star inputs & labels (ChatGPT)
-  setupStarRatingGroup(savedEntryClone);
+  // unique IDs/names to stars
+  setupStarRatingGroup(savedEntryClone); // ChatGPT
 
   // fill in
   savedEntryClone.querySelector(".saved_title").value = newTitle;
@@ -96,17 +90,11 @@ container.addEventListener("click", (e) => {
   savedEntryClone.querySelector(".saved_date").value = newDate;
   savedEntryClone.querySelector(".saved_textarea").value = newText;
 
-  const genreSummary = savedEntryClone.querySelector(
-    ".saved_detail_entry:nth-child(1) summary"
-  );
-  const typeSummary = savedEntryClone.querySelector(
-    ".saved_detail_entry:nth-child(2) summary"
-  );
-  const formatSummary = savedEntryClone.querySelector(
-    ".saved_detail_entry:nth-child(3) summary"
-  );
+  const genreSummary = savedEntryClone.querySelector(".saved_detail_entry:nth-child(1) summary"); // ChatGPT
+  const typeSummary = savedEntryClone.querySelector(".saved_detail_entry:nth-child(2) summary");
+  const formatSummary = savedEntryClone.querySelector(".saved_detail_entry:nth-child(3) summary");
 
-  genreSummary.textContent = genre || "Genre"; // ChatGPT
+  genreSummary.textContent = genre || "Genre";
   typeSummary.textContent = type || "Type";
   formatSummary.textContent = format || "Format";
 
@@ -115,27 +103,25 @@ container.addEventListener("click", (e) => {
     iconImg.src = newIconSrc;
   }
 
-  const savedStarInputs = savedEntryClone.querySelectorAll(
-    ".saved_star_rating input[type='radio']"
-  );
-  savedStarInputs.forEach((input) => {
+  const savedStarInputs = savedEntryClone.querySelectorAll(".saved_star_rating input[type='radio']");
+  savedStarInputs.forEach((input) => { // ChatGPT
     if (parseInt(input.value) === rating) {
       input.checked = true;
     }
   });
 
-  newEntry.remove(); //ChatGPT
+  newEntry.remove(); 
 
-  // container
+  // add to container
   const entriesContainer = document.getElementById("entries_container");
-  entriesContainer.appendChild(savedEntryClone);
+  entriesContainer.appendChild(savedEntryClone); // ChatGPT
 
   sortEntriesByDate(entriesContainer);
   saveToLocalStorage();
 });
 
 // sort function
-function sortEntriesByDate(container) {
+function sortEntriesByDate(container) { // ChatGPT
   const entries = Array.from(container.querySelectorAll(".saved_entry"));
   entries.sort((a, b) => {
     const dateA = new Date(
@@ -144,13 +130,14 @@ function sortEntriesByDate(container) {
     const dateB = new Date(
       b.querySelector(".saved_date")?.value || "1900-01-01"
     );
-    return dateB - dateA; // Newest first
+    return dateB - dateA;
   });
 
   entries.forEach((entry) => container.appendChild(entry));
 }
-// unique star rating group (ChatGPT)
-function setupStarRatingGroup(container) {
+
+// unique star id/name 
+function setupStarRatingGroup(container) { // ChatGPT
   const starContainer = container.querySelector(".new_star_rating");
   if (!starContainer) return;
 
@@ -176,12 +163,13 @@ function setupStarRatingGroup(container) {
 function updateStatistics() {
   const container = document.getElementById("entries_container");
 
-  const entries = Array.from(container.querySelectorAll(".saved_entry"));
-  // 1. Total Entries
-  const totalEntries = entries.length;
-  document.getElementById("total_entries").textContent = totalEntries;
-  // 2. Year Range
-  let years = entries
+  const entries = Array.from(container.querySelectorAll(".saved_entry")); // ChatGPT
+
+  // 1. total entries
+  document.getElementById("total_entries").textContent = entries.length;
+  
+  // 2. year range
+  let years = entries // ChatGPT
     .map((entry) => parseInt(entry.querySelector(".saved_year").value))
     .filter((y) => !isNaN(y));
 
@@ -190,11 +178,10 @@ function updateStatistics() {
   } else {
     const minYear = Math.min(...years);
     const maxYear = Math.max(...years);
-    document.getElementById(
-      "year_range"
-    ).textContent = `${minYear} - ${maxYear}`;
+    document.getElementById("year_range").textContent = `${minYear} - ${maxYear}`;
   }
-  // 3. Top Artist
+
+  // 3. top artist // ChatGPT
   const artistCount = {};
   let topArtist = "---";
   entries.forEach((entry) => {
@@ -207,7 +194,7 @@ function updateStatistics() {
   }
   document.getElementById("top_artist").textContent = topArtist;
 
-  // 4. Average Rating
+  // 4. average rating
   let totalRating = 0;
   let ratingCount = 0;
   entries.forEach((entry) => {
@@ -225,7 +212,7 @@ function updateStatistics() {
   updateAvgRating(avgRating);
 }
 
-// Update the star rating based on average
+// update star average
 function updateAvgRating(avgRating) {
   const avgRatingElement = document.getElementById("avg_rating");
   const stars = avgRatingElement.querySelectorAll("input[type='radio']");
@@ -235,10 +222,7 @@ function updateAvgRating(avgRating) {
   });
 }
 
-// Call this function after adding or editing an entry
-updateStatistics();
-
-// Optionally, call updateStatistics whenever an entry is saved or modified
+// update stats after save
 container.addEventListener("click", (e) => {
   if (
     e.target.classList.contains("save_button") ||
@@ -256,32 +240,21 @@ container.addEventListener("click", (e) => {
   const template = document.getElementById("new_entry_template");
   const clone = template.content.cloneNode(true);
 
-  // copy values
-  clone.querySelector(".new_title").value =
-    savedEntry.querySelector(".saved_title").value;
-  clone.querySelector(".new_artist").value =
-    savedEntry.querySelector(".saved_artist").value;
-  clone.querySelector(".new_year").value =
-    savedEntry.querySelector(".saved_year").value;
-  clone.querySelector(".new_date").value =
-    savedEntry.querySelector(".saved_date").value;
-  clone.querySelector(".new_textarea").value =
-    savedEntry.querySelector(".saved_textarea").value;
+  // copy input
+  clone.querySelector(".new_title").value = savedEntry.querySelector(".saved_title").value;
+  clone.querySelector(".new_artist").value = savedEntry.querySelector(".saved_artist").value;
+  clone.querySelector(".new_year").value = savedEntry.querySelector(".saved_year").value;
+  clone.querySelector(".new_date").value = savedEntry.querySelector(".saved_date").value;
+  clone.querySelector(".new_textarea").value = savedEntry.querySelector(".saved_textarea").value;
 
-  // copy icon
   const savedIcon = savedEntry.querySelector(".current_icon")?.src;
   const newIcon = clone.querySelector(".new_current_icon");
   if (savedIcon && newIcon) {
     newIcon.src = savedIcon;
   }
 
-  // copy stars
-  const savedChecked = savedEntry.querySelector(
-    ".saved_star_rating input[type='radio']:checked"
-  );
-  const newStars = clone.querySelectorAll(
-    ".new_star_rating input[type='radio']"
-  );
+  const savedChecked = savedEntry.querySelector(".saved_star_rating input[type='radio']:checked");
+  const newStars = clone.querySelectorAll(".new_star_rating input[type='radio']");
   if (savedChecked) {
     newStars.forEach((star) => {
       if (star.value === savedChecked.value) {
@@ -290,37 +263,32 @@ container.addEventListener("click", (e) => {
     });
   }
 
-  // copy details
   const newDetails = clone.querySelectorAll(".new_detail_entry");
-  newDetails.forEach((detailsGroup) => {
+  newDetails.forEach((detailsGroup, index) => {
     const summary = detailsGroup.querySelector("summary");
-    const type = detailsGroup.dataset.type; // "genre", "type", etc.
+    const type = detailsGroup.dataset.type;
 
-    const savedSpan = savedEntry.querySelector(`.saved_${type}`);
-    const savedText = savedSpan?.textContent.trim();
+    const savedDetailsGroup = savedEntry.querySelectorAll(".saved_detail_entry")[index];
+    const savedText = savedDetailsGroup?.querySelector("summary")?.textContent.trim();
 
-    if (savedText) {
-      const matchingRadio = [...detailsGroup.querySelectorAll("label")].find(
-        (label) => {
-          return label.textContent.trim() === savedText;
-        }
-      );
+    if (savedText) { // ChatGPT
+     const matchingRadio = [...detailsGroup.querySelectorAll("label")].find((label) => label.textContent.trim() === savedText);
 
       if (matchingRadio) {
         const radio = matchingRadio.querySelector("input");
         if (radio) {
           radio.checked = true;
           summary.textContent = savedText;
-          detailsGroup.removeAttribute("open"); //ChatGPT
+          detailsGroup.removeAttribute("open");
         }
       }
     }
   });
 
   // replace
-  savedEntry.replaceWith(clone);
+  savedEntry.replaceWith(clone); // ChatGPT
 
-  initDetailEntries(container); //ChatGPT
+  initDetailEntries(container); // ChatGPT
 
   updateStatistics();
   saveToLocalStorage();
@@ -355,29 +323,20 @@ function saveToLocalStorage() {
       year: entry.querySelector(".saved_year").value,
       date: entry.querySelector(".saved_date").value,
       text: entry.querySelector(".saved_textarea").value,
-      genre: entry
-        .querySelector(".saved_detail_entry:nth-child(1) summary")
-        .textContent.trim(),
-      type: entry
-        .querySelector(".saved_detail_entry:nth-child(2) summary")
-        .textContent.trim(),
-      format: entry
-        .querySelector(".saved_detail_entry:nth-child(3) summary")
-        .textContent.trim(),
+      genre: entry.querySelector(".saved_detail_entry:nth-child(1) summary").textContent.trim(),
+      type: entry.querySelector(".saved_detail_entry:nth-child(2) summary").textContent.trim(),
+      format: entry.querySelector(".saved_detail_entry:nth-child(3) summary").textContent.trim(),
       icon: entry.querySelector(".current_icon")?.src || "",
-      rating: parseInt(
-        entry.querySelector(".saved_star_rating input[type='radio']:checked")
-          ?.value || 0
-      ),
+      rating: parseInt(entry.querySelector(".saved_star_rating input[type='radio']:checked")?.value || 0),
     };
   });
 
   localStorage.setItem("discDiaryEntries", JSON.stringify(data));
 }
+
 //storage (load)
 function loadFromLocalStorage() {
   const data = JSON.parse(localStorage.getItem("discDiaryEntries") || "[]");
-
   const template = document.getElementById("saved_entry_template");
   const container = document.getElementById("entries_container");
 
@@ -390,22 +349,15 @@ function loadFromLocalStorage() {
     clone.querySelector(".saved_date").value = entryData.date;
     clone.querySelector(".saved_textarea").value = entryData.text;
 
-    clone.querySelector(
-      ".saved_detail_entry:nth-child(1) summary"
-    ).textContent = entryData.genre || "Genre";
-    clone.querySelector(
-      ".saved_detail_entry:nth-child(2) summary"
-    ).textContent = entryData.type || "Type";
-    clone.querySelector(
-      ".saved_detail_entry:nth-child(3) summary"
-    ).textContent = entryData.format || "Format";
+    clone.querySelector(".saved_detail_entry:nth-child(1) summary").textContent = entryData.genre || "Genre";
+    clone.querySelector(".saved_detail_entry:nth-child(2) summary").textContent = entryData.type || "Type";
+    clone.querySelector(".saved_detail_entry:nth-child(3) summary").textContent = entryData.format || "Format";
 
     const iconImg = clone.querySelector(".current_icon");
-    if (iconImg && entryData.icon) iconImg.src = entryData.icon;
+    if (iconImg && entryData.icon)
+      iconImg.src = entryData.icon;
 
-    const stars = clone.querySelectorAll(
-      ".saved_star_rating input[type='radio']"
-    );
+    const stars = clone.querySelectorAll(".saved_star_rating input[type='radio']");
     stars.forEach((input) => {
       if (parseInt(input.value) === entryData.rating) {
         input.checked = true;
@@ -420,4 +372,5 @@ function loadFromLocalStorage() {
   sortEntriesByDate(container);
   updateStatistics();
 }
-loadFromLocalStorage(); // ChatGPT
+
+loadFromLocalStorage();
