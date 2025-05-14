@@ -1,11 +1,11 @@
 /* main */
 :root {
-  --primary-color-1: #a9a59f;
-  --primary-color-2: #554b3f;
-  --primary-color-3: #f2f1ec;
-  --primary-color-4: #363625;
-  --primary-color-5: #1d1a16;
-  --primary-color-6: #746d63;
+  --primary-color-1: #b9b5ae;
+  --primary-color-2: #675b4e;
+  --primary-color-3: #f7f5f1;
+  --primary-color-4: #40402d;
+  --primary-color-5: #2d2822;
+  --primary-color-6: #8d8375;
 }
 body,
 footer,
@@ -275,7 +275,6 @@ input[type="radio"] { /* ChatGPT */
   color: var(--primary-color-5);
   transition: color 0.4s, transform 0.2s ease;
 }
-
 .saved_star_rating input,
 .new_star_rating input,
 .extra_star_rating input {
@@ -317,7 +316,6 @@ input[type="radio"] { /* ChatGPT */
 .delete_button:active {
   border-style: inset;
 }
-
 .new_textarea,
 .new_title,
 .new_artist,
@@ -326,7 +324,6 @@ input[type="radio"] { /* ChatGPT */
   cursor: text;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
-
 button,
 .edit_button, 
 .save_button, 
@@ -339,7 +336,6 @@ input[type="date"],
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
-
 button:hover,
 .edit_button:hover,
 .save_button:hover,
@@ -353,16 +349,13 @@ details.new_detail_entry:hover,
 .icon_option:hover { 
   transform: scale(1.08);
 }
-
 .new_current_icon:hover,
 .new_input:hover {
   transform: scale(1.05);
 }
-
 .new_textarea:hover {
   transform: scale(1.02);
 }
-
 .saved_detail_entry,
 .saved_star_entry,
 .saved_year,

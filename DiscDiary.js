@@ -2,15 +2,54 @@
 const container = document.getElementById("entries_container");
 
 document.getElementById("add_entry_button").addEventListener("click", () => {
-  if (document.querySelector(".new_entry")) return;
+  if (document.querySelector(".new_entry")) return; // ChatGPT
 
   const template = document.getElementById("new_entry_template");
-  const clone = template.content.cloneNode(true);
+  const clone = template.content.cloneNode(true); // ChatGPT
 
   container.insertBefore(clone, container.firstChild);
 
   initDetailEntries(container); // ChatGPT
 });
+
+// detail update
+function initDetailEntries(scope = document) { // ChatGPT
+  scope.querySelectorAll(".new_detail_entry").forEach((details) => {
+    const radios = details.querySelectorAll("input[type='radio']");
+    const summary = details.querySelector("summary");
+
+    radios.forEach((radio) => {
+      radio.addEventListener("change", () => {
+        const label = radio.closest("label");
+        if (radio.checked && label) {
+          summary.textContent = label.textContent.trim(); // ChatGPT
+          details.removeAttribute("open");
+        }
+      });
+    });
+  });
+}
+
+// icon selection
+let currentNewIcon = null;
+
+document.addEventListener("click", function (e) {
+  if (e.target.classList.contains("new_current_icon")) {
+    currentNewIcon = e.target;
+    document.querySelector(".modal").style.display = "block"; //ChatGPT
+  }
+});
+
+function closeModal() {
+  document.querySelector(".modal").style.display = "none";
+}
+
+function selectIcon(src) {
+  if (currentNewIcon) {
+    currentNewIcon.src = src;
+  }
+  closeModal();
+}
 
 // save entry
 container.addEventListener("click", (e) => {
@@ -92,7 +131,9 @@ container.addEventListener("click", (e) => {
   entriesContainer.appendChild(savedEntryClone);
 
   sortEntriesByDate(entriesContainer);
+  saveToLocalStorage();
 });
+
 // sort function
 function sortEntriesByDate(container) {
   const entries = Array.from(container.querySelectorAll(".saved_entry"));
@@ -270,7 +311,7 @@ container.addEventListener("click", (e) => {
         if (radio) {
           radio.checked = true;
           summary.textContent = savedText;
-          detailsGroup.removeAttribute("open"); // collapse the dropdown
+          detailsGroup.removeAttribute("open"); //ChatGPT
         }
       }
     }
@@ -282,56 +323,19 @@ container.addEventListener("click", (e) => {
   initDetailEntries(container); //ChatGPT
 
   updateStatistics();
+  saveToLocalStorage();
 });
 
 // delete entry
 container.addEventListener("click", (e) => {
-  if (!e.target.classList.contains("delete-button")) return;
+  if (!e.target.classList.contains("delete_button")) return;
 
   const entry = e.target.closest(".new_entry, .saved_entry");
   if (entry) entry.remove();
 
   updateStatistics();
+  saveToLocalStorage();
 });
-
-// detail update (ChatGPT)
-function initDetailEntries(scope = document) {
-  scope.querySelectorAll(".new_detail_entry").forEach((details) => {
-    const radios = details.querySelectorAll("input[type='radio']");
-    const summary = details.querySelector("summary");
-
-    radios.forEach((radio) => {
-      radio.addEventListener("change", () => {
-        const label = radio.closest("label");
-        if (radio.checked && label) {
-          summary.textContent = label.textContent.trim();
-          details.removeAttribute("open");
-        }
-      });
-    });
-  });
-}
-
-// icon selection
-let currentNewIcon = null;
-
-document.addEventListener("click", function (e) {
-  if (e.target.classList.contains("new_current_icon")) {
-    currentNewIcon = e.target;
-    document.querySelector(".modal").style.display = "block";
-  }
-});
-
-function closeModal() {
-  document.querySelector(".modal").style.display = "none";
-}
-
-function selectIcon(src) {
-  if (currentNewIcon) {
-    currentNewIcon.src = src;
-  }
-  closeModal();
-}
 
 // scroll to top
 document.getElementById("top_button").addEventListener("click", () => {
@@ -340,3 +344,80 @@ document.getElementById("top_button").addEventListener("click", () => {
     behavior: "smooth",
   });
 });
+
+// storage (save)
+function saveToLocalStorage() {
+  const entries = Array.from(document.querySelectorAll(".saved_entry"));
+  const data = entries.map((entry) => {
+    return {
+      title: entry.querySelector(".saved_title").value,
+      artist: entry.querySelector(".saved_artist").value,
+      year: entry.querySelector(".saved_year").value,
+      date: entry.querySelector(".saved_date").value,
+      text: entry.querySelector(".saved_textarea").value,
+      genre: entry
+        .querySelector(".saved_detail_entry:nth-child(1) summary")
+        .textContent.trim(),
+      type: entry
+        .querySelector(".saved_detail_entry:nth-child(2) summary")
+        .textContent.trim(),
+      format: entry
+        .querySelector(".saved_detail_entry:nth-child(3) summary")
+        .textContent.trim(),
+      icon: entry.querySelector(".current_icon")?.src || "",
+      rating: parseInt(
+        entry.querySelector(".saved_star_rating input[type='radio']:checked")
+          ?.value || 0
+      ),
+    };
+  });
+
+  localStorage.setItem("discDiaryEntries", JSON.stringify(data));
+}
+//storage (load)
+function loadFromLocalStorage() {
+  const data = JSON.parse(localStorage.getItem("discDiaryEntries") || "[]");
+
+  const template = document.getElementById("saved_entry_template");
+  const container = document.getElementById("entries_container");
+
+  data.forEach((entryData) => {
+    const clone = template.content.cloneNode(true);
+
+    clone.querySelector(".saved_title").value = entryData.title;
+    clone.querySelector(".saved_artist").value = entryData.artist;
+    clone.querySelector(".saved_year").value = entryData.year;
+    clone.querySelector(".saved_date").value = entryData.date;
+    clone.querySelector(".saved_textarea").value = entryData.text;
+
+    clone.querySelector(
+      ".saved_detail_entry:nth-child(1) summary"
+    ).textContent = entryData.genre || "Genre";
+    clone.querySelector(
+      ".saved_detail_entry:nth-child(2) summary"
+    ).textContent = entryData.type || "Type";
+    clone.querySelector(
+      ".saved_detail_entry:nth-child(3) summary"
+    ).textContent = entryData.format || "Format";
+
+    const iconImg = clone.querySelector(".current_icon");
+    if (iconImg && entryData.icon) iconImg.src = entryData.icon;
+
+    const stars = clone.querySelectorAll(
+      ".saved_star_rating input[type='radio']"
+    );
+    stars.forEach((input) => {
+      if (parseInt(input.value) === entryData.rating) {
+        input.checked = true;
+      }
+    });
+
+    setupStarRatingGroup(clone); // ChatGPT
+
+    container.appendChild(clone);
+  });
+
+  sortEntriesByDate(container);
+  updateStatistics();
+}
+loadFromLocalStorage(); // ChatGPT
